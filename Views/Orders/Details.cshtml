@@ -1,0 +1,35 @@
+@model InventoryManagementSystem.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h2>Order #@Model.Id</h2>
+<br/>
+<p><strong>Date:</strong> @Model.OrderDate</p>
+<br/>
+<p><strong>Total Price:</strong> $@Model.TotalPrice</p>
+<br/>
+
+<h3>Products in Order:</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var orderProduct in Model.OrderProducts)
+    {
+        <tr>
+            <td>@orderProduct.Product?.Name</td>
+            <td>@orderProduct.Quantity</td>
+            <td>$@(orderProduct.Product?.Price * orderProduct.Quantity)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to Orders</a>
