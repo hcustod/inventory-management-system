@@ -11,7 +11,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - inventorydb_data:/var/lib/postgresql/data
-      - ./inventorydb.sql:/docker-entrypoint-initdb.d/inventorydb.sql:ro
     ports:
       - "${DB_PORT}:5432"
 
